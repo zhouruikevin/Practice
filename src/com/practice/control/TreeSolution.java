@@ -86,4 +86,48 @@ public class TreeSolution {
 		}
 		return node;
 	}
+
+	public static boolean HasSubtree(TreeNode root1, TreeNode root2) {
+		// 注意为空 不是子树
+		if (root2 == null) {
+			return false;
+		}
+		if (root1 == null && root2 != null) {
+			return false;
+		}
+		boolean flag = isSubtree(root1, root2);
+		if (!flag) {
+			flag = HasSubtree(root1.left, root2);
+			if (!flag) {
+				flag = HasSubtree(root1.right, root2);
+			}
+		}
+		return flag;
+	}
+
+	public static boolean isSubtree(TreeNode root1, TreeNode root2) {
+		// 这里是判断路径上所有值都判断完了，不是判断子树
+		if (root2 == null) {
+			return true;
+		}
+		if (root1 == null && root2 != null) {
+			return false;
+		}
+		if (root1.val == root2.val) {
+			return isSubtree(root1.left, root2.left)
+					&& isSubtree(root1.right, root2.right);
+		}
+		return false;
+	}
+
+	public static void Mirror(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		Mirror(root.left);
+		Mirror(root.right);
+		TreeNode temp = root.left;
+		root.left = root.right;
+		root.right = temp;
+	}
 }
