@@ -1,6 +1,8 @@
 package com.practice.control;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import com.practice.domain.ListNode;
@@ -23,6 +25,21 @@ public class ListSolution {
 		int temp = list.get(i);
 		list.set(i, list.get(j));
 		list.set(j, temp);
+	}
+
+	public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
+		Map<ListNode, Integer> map = new HashMap<ListNode, Integer>();
+		while (pHead1 != null) {
+			map.put(pHead1, null);
+			pHead1 = pHead1.next;
+		}
+		while (pHead2 != null) {
+			if (map.containsKey(pHead2)) {
+				return pHead2;
+			}
+			pHead2 = pHead2.next;
+		}
+		return null;
 	}
 
 	Stack<Integer> stack1 = new Stack<Integer>();

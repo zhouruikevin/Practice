@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import android.text.InputFilter.LengthFilter;
+
 public class NumberSolution {
 	public static int NumberOf1(int n) {
 		String binaNStr = Integer.toBinaryString(n).replaceAll("0", "");
@@ -54,6 +56,43 @@ public class NumberSolution {
 			sb.append(numStrs[i]);
 		}
 		return sb.toString();
+	}
+
+	public int getFirst(int[] array, int s, int e, int k) {
+		if (s >= e) {
+			return array[e] == k ? e : -1;
+		}
+		int mid = (s + e) / 2;
+		if (array[mid] < k) {
+			return getFirst(array, mid + 1, e, k);
+		} else {
+			return getFirst(array, s, mid, k);
+		}
+	}
+
+	public int getEnd(int[] array, int s, int e, int k) {
+		if (s >= e) {
+			return array[s] == k ? s : -1;
+
+		}
+		int mid = (s + e) / 2;
+		if (array[mid] <= k) {
+			return getEnd(array, mid, e, k);
+		} else {
+			return getEnd(array, s, mid - 1, k);
+		}
+	}
+
+	public int GetNumberOfK(int[] array, int k) {
+		if (array == null || array.length == 0) {
+			return 0;
+		}
+		if (array[0] > k || array[array.length - 1] < k) {
+			return 0;
+		}
+		int first = getFirst(array, 0, array.length - 1, k);
+		int end = getEnd(array, 0, array.length - 1, k);
+		return end - first + 1;
 	}
 
 	public int NumberOf1Between1AndN_Solution(int n) {

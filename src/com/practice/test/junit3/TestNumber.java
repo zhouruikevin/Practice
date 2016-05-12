@@ -2,6 +2,8 @@ package com.practice.test.junit3;
 
 import java.util.ArrayList;
 
+import org.kymjs.kjframe.utils.L;
+
 import com.practice.control.NumberSolution;
 
 import junit.framework.TestCase;
@@ -37,13 +39,21 @@ public class TestNumber extends TestCase {
 
 	}
 
-//	public void testPrintMinNumber() {
-//		assertEquals(result, solution.PrintMinNumber(array));
-//	}
-
-	public void testNumberOf1Between1AndN_Solution() {
-		assertEquals(6, solution.NumberOf1Between1AndN_Solution(13));
+	public void testGetNumberOfK() {
+		int[] array = { 1, 2, 3, 3, 3, 3, 4, 5 };
+		assertEquals(2, solution.getFirst(array, 0, array.length - 1, 3));
+		int end = solution.getEnd(array, 0, array.length - 1, 3);
+		assertEquals(5, end);
+		assertEquals(4, solution.GetNumberOfK(array, 3));
 	}
+	// public void testPrintMinNumber() {
+	// assertEquals(result, solution.PrintMinNumber(array));
+	// }
+	//
+	// public void testNumberOf1Between1AndN_Solution() {
+	// assertEquals(6, solution.NumberOf1Between1AndN_Solution(13));
+	// }
+	//
 	// public void testGetLeastNumbers_Solution() {
 	// assertEquals(aMin2, solution.GetLeastNumbers_Solution(array, 2));
 	// assertEquals(aMin3, solution.GetLeastNumbers_Solution(array, 3));
