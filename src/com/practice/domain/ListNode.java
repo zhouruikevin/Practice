@@ -1,6 +1,10 @@
 package com.practice.domain;
 
-public class ListNode {
+import java.io.Serializable;
+
+public class ListNode implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	public int val;
 	public ListNode next = null;
 

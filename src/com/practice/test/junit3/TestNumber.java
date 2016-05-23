@@ -2,11 +2,9 @@ package com.practice.test.junit3;
 
 import java.util.ArrayList;
 
-import org.kymjs.kjframe.utils.L;
+import junit.framework.TestCase;
 
 import com.practice.control.NumberSolution;
-
-import junit.framework.TestCase;
 
 public class TestNumber extends TestCase {
 
@@ -40,11 +38,13 @@ public class TestNumber extends TestCase {
 	}
 
 	public void testGetNumberOfK() {
-		int[] array = { 1, 2, 3, 3, 3, 3, 4, 5 };
-		assertEquals(2, solution.getFirst(array, 0, array.length - 1, 3));
-		int end = solution.getEnd(array, 0, array.length - 1, 3);
-		assertEquals(5, end);
-		assertEquals(4, solution.GetNumberOfK(array, 3));
+
+		String s1 = "Programming";
+		String s2 = new String("Programming");
+		String s3 = "Program" + "ming";
+		System.out.println(s1.toString() == s2.toString());
+		System.out.println(s1 == s3);
+		System.out.println(s1 == s1.intern());
 	}
 	// public void testPrintMinNumber() {
 	// assertEquals(result, solution.PrintMinNumber(array));
